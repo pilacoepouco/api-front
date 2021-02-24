@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -38,12 +39,19 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         try{
-           $request->validate([
+            $messages = [
+                'name' => 'Preencha o nome',
+                'email' => 'Preencha o email',
+                'password' => 'Preencha a senha',
+                'phone' => 'Preencha o telefone',
+            ];
+
+            Validator::make($request->all(), [
                 'name' => 'require|string',
                 'email' => 'required|string',
                 'password' => 'required|string',
                 'phone' => 'required|string',
-            ]);
+            ],$messages);
 
             $user = new User();
             $user->name = $request->name;
