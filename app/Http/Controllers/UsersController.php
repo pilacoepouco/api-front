@@ -51,7 +51,7 @@ class UsersController extends Controller
                 'email' => 'required|string',
                 'password' => 'required|string',
                 'phone' => 'required|string',
-            ],$messages);
+            ],$messages)->validate();
 
             $user = new User();
             $user->name = $request->name;
