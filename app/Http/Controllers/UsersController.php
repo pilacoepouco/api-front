@@ -40,10 +40,10 @@ class UsersController extends Controller
     {
         try{
             $messages = [
-                'name.required' => 'Preencha o nome',
-                'email.required' => 'Preencha o email',
-                'password.required' => 'Preencha a senha',
-                'phone.required' => 'Preencha o telefone',
+                'name' => 'Preencha o nome',
+                'email' => 'Preencha o email',
+                'password' => 'Preencha a senha',
+                'phone' => 'Preencha o telefone',
             ];
 
             $validator = Validator::make($request->all(), [
