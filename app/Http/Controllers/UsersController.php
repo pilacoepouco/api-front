@@ -46,13 +46,18 @@ class UsersController extends Controller
                 'phone.required' => 'Preencha o telefone',
             ];
 
-            Validator::make($request->all(), [
+            $validator = Validator::make($request->all(), [
                 'name' => 'require|string',
-                'email' => 'required|string',
+                'email' => 'required|email',
                 'password' => 'required|string',
                 'phone' => 'required|string',
-            ],$messages)->validate();
-
+            ],$messages);
+            if ($validator->fails()){
+                return response()->json([
+                    'status' => "Error",
+                    'message' => $validator->errors()->toArray()
+                ]);
+           }
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
