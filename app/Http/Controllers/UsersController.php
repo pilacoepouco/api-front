@@ -43,18 +43,13 @@ class UsersController extends Controller
                 'required' => 'The :attribute field is required.',
             ];
 
-            $validator = Validator::make($request->all(), [
+            Validator::make($request->all(), [
                 'name' => 'require|string',
                 'email' => 'required|email',
                 'password' => 'required|string',
                 'phone' => 'required|string',
-            ],$messages);
-            if ($validator->fails()){
-                return response()->json([
-                    'status' => "Error",
-                    'message' => $validator->errors()->toArray()
-                ]);
-           }
+            ],$messages)->validate();
+
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
