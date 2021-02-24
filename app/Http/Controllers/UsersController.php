@@ -45,7 +45,7 @@ class UsersController extends Controller
 
             Validator::make($request->all(), [
                 'name' => 'required|string',
-                'email' => 'required|email',
+                'email' => 'required',
                 'password' => 'required|string',
                 'phone' => 'required|string',
             ],$messages)->validate();
