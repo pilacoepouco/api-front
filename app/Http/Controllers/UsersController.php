@@ -46,8 +46,8 @@ class UsersController extends Controller
             Validator::make($request->all(), [
                 'name' => 'required|string',
                 'email' => 'required',
-                'password' => 'required|string',
-                'phone' => 'required|string',
+                'password' => 'required',
+                'phone' => 'required',
             ],$messages)->validate();
 
             $user = new User();
