@@ -40,10 +40,7 @@ class UsersController extends Controller
     {
         try{
             $messages = [
-                'name' => 'Preencha o nome',
-                'email' => 'Preencha o email',
-                'password' => 'Preencha a senha',
-                'phone' => 'Preencha o telefone',
+                'required' => 'The :attribute field is required.',
             ];
 
             $validator = Validator::make($request->all(), [
